@@ -37,9 +37,9 @@ class CustomerTest {
         customer.addRental(longRental);
 
         String expect = "Rental Record for " + customer.getName() + "\n" +
-                "\t" + regularMovie_FA_1.getTitle() + "\t" + 2.0 + "\n" +
-                "\t" + regularMovie_FA_2.getTitle() + "\t" + 2.0 + "\n" +
-                "\t" + regularMovie_EVO.getTitle() + "\t" + 3.5 + "\n" +
+                "\t" + regularMovie_FA_1.getTitle() + "\t" + shortRental.getCharge() + "\n" +
+                "\t" + regularMovie_FA_2.getTitle() + "\t" + basicRental.getCharge() + "\n" +
+                "\t" + regularMovie_EVO.getTitle() + "\t" + longRental.getCharge() + "\n" +
                 "Amount owed is " + 7.5 + "\n" +
                 "You earned " + 3 + " frequent renter points";
 
@@ -60,9 +60,9 @@ class CustomerTest {
         customer.addRental(longRental);
 
         String expect = "Rental Record for " + customer.getName() + "\n" +
-                "\t" + newReleaseMovie_FA_1.getTitle() + "\t" + 3.0 + "\n" +
-                "\t" + newReleaseMovie_FA_2.getTitle() + "\t" + 6.0 + "\n" +
-                "\t" + newReleaseMovie_EVO.getTitle() + "\t" + 9.0 + "\n" +
+                "\t" + newReleaseMovie_FA_1.getTitle() + "\t" + shortRental.getCharge() + "\n" +
+                "\t" + newReleaseMovie_FA_2.getTitle() + "\t" + basicRental.getCharge() + "\n" +
+                "\t" + newReleaseMovie_EVO.getTitle() + "\t" + longRental.getCharge() + "\n" +
                 "Amount owed is " + 18.0 + "\n" +
                 "You earned " + 5 + " frequent renter points";
 
@@ -83,9 +83,9 @@ class CustomerTest {
         customer.addRental(longRental);
 
         String expect = "Rental Record for " + customer.getName() + "\n" +
-                "\t" + childrensMovie_FA_1.getTitle() + "\t" + 1.5 + "\n" +
-                "\t" + childrensMovie_FA_2.getTitle() + "\t" + 1.5 + "\n" +
-                "\t" + childrensMovie_EVO.getTitle() + "\t" + 3.0 + "\n" +
+                "\t" + childrensMovie_FA_1.getTitle() + "\t" + shortRental.getCharge() + "\n" +
+                "\t" + childrensMovie_FA_2.getTitle() + "\t" + basicRental.getCharge() + "\n" +
+                "\t" + childrensMovie_EVO.getTitle() + "\t" + longRental.getCharge() + "\n" +
                 "Amount owed is " + 6.0 + "\n" +
                 "You earned " + 3 + " frequent renter points";
 
