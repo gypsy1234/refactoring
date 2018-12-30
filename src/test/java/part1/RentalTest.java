@@ -2,6 +2,8 @@ package part1;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RentalTest {
@@ -10,13 +12,27 @@ class RentalTest {
     private static final int NEW_RELEASE = 1;
     private static final int CHILDRENS = 2;
 
+    private Movie regularMovie = null;
+    private Movie newReleaseMovie = null;
+    private Movie childrensMovie = null;
+
+    @BeforeEach
+    void init() {
+        regularMovie = new Movie("鋼の錬金術師_11", REGULAR);
+        newReleaseMovie = new Movie("鋼の錬金術師_2", NEW_RELEASE);
+        childrensMovie = new Movie("Evolution", CHILDRENS);
+    }
+
+    @AfterEach
+    void tearDown() {
+        regularMovie = null;
+        newReleaseMovie = null;
+        childrensMovie = null;
+    }
+
+
     @Test
     void getChargeTest() {
-
-        Movie regularMovie = new Movie("鋼の錬金術師_11", REGULAR);
-        Movie newReleaseMovie = new Movie("鋼の錬金術師_2", NEW_RELEASE);
-        Movie childrensMovie = new Movie("Evolution", CHILDRENS);
-
         assertCharge(regularMovie);
         assertCharge(newReleaseMovie);
         assertCharge(childrensMovie);
@@ -31,26 +47,15 @@ class RentalTest {
 
     @Test
     void getFrequentRenterPointsTest() {
+        assertFrequentPoint(regularMovie);
+        assertFrequentPoint(childrensMovie);
+        assertFrequentPoint(newReleaseMovie);
+    }
 
-        Movie regularMovie_FA_1 = new Movie("鋼の錬金術師_11", REGULAR);
-        Movie childrensMovie_FA_1 = new Movie("鋼の錬金術師_11", CHILDRENS);
-        Movie newReleaseMovie_FA_1 = new Movie("鋼の錬金術師_11", NEW_RELEASE);
-
-        Rental regularShortRental = new Rental(regularMovie_FA_1, 1);
-        Rental regularLongRental = new Rental(regularMovie_FA_1, 2);
-
-        Rental childrensShortRental = new Rental(childrensMovie_FA_1, 1);
-        Rental childrensLongRental = new Rental(childrensMovie_FA_1, 2);
-
-        Rental newShortRental = new Rental(newReleaseMovie_FA_1, 1);
-        Rental newLongRental = new Rental(newReleaseMovie_FA_1, 2);
-
-
-        assertEquals(1, regularShortRental.getFrequentRenterPoints());
-        assertEquals(1, regularLongRental.getFrequentRenterPoints());
-        assertEquals(1, childrensShortRental.getFrequentRenterPoints());
-        assertEquals(1, childrensLongRental.getFrequentRenterPoints());
-        assertEquals(1, newShortRental.getFrequentRenterPoints());
-        assertEquals(2, newLongRental.getFrequentRenterPoints());
+    private void assertFrequentPoint(Movie movie) {
+        for (int i = 1; i < 5; i++) {
+            Rental rental = new Rental(movie, i);
+            assertEquals(movie.getFrequentRenterPoints(i), rental.getFrequentRenterPoints());
+        }
     }
 }
