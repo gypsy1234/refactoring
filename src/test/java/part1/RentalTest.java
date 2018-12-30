@@ -8,19 +8,15 @@ import org.junit.jupiter.api.Test;
 
 class RentalTest {
 
-    private static final int REGULAR = 0;
-    private static final int NEW_RELEASE = 1;
-    private static final int CHILDRENS = 2;
-
     private Movie regularMovie = null;
     private Movie newReleaseMovie = null;
     private Movie childrensMovie = null;
 
     @BeforeEach
     void init() {
-        regularMovie = new Movie("鋼の錬金術師_11", REGULAR);
-        newReleaseMovie = new Movie("鋼の錬金術師_2", NEW_RELEASE);
-        childrensMovie = new Movie("Evolution", CHILDRENS);
+        regularMovie = new Movie("鋼の錬金術師_11", Price.REGULAR);
+        newReleaseMovie = new Movie("鋼の錬金術師_2", Price.NEW_RELEASE);
+        childrensMovie = new Movie("Evolution", Price.CHILDRENS);
     }
 
     @AfterEach

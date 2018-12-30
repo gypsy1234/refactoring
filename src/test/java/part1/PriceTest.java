@@ -2,36 +2,13 @@ package part1;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class PriceTest {
 
-    private Price regularPrice = null;
-    private Price childrensPrice = null;
-    private Price newReleasePrice = null;
-
-    @BeforeEach
-    void init() {
-        regularPrice = new RegularPrice();
-        childrensPrice = new ChildrensPrice();
-        newReleasePrice = new NewReleasePrice();
-    }
-
-    @AfterEach
-    void tearDown() {
-        regularPrice = null;
-        childrensPrice = null;
-        newReleasePrice = null;
-    }
-
-    @Test
-    void getPriceCodeTest() {
-        assertEquals(Movie.REGULAR, regularPrice.getPriceCode());
-        assertEquals(Movie.CHILDRENS, childrensPrice.getPriceCode());
-        assertEquals(Movie.NEW_RELEASE, newReleasePrice.getPriceCode());
-    }
+    private PriceIntf regularPrice = Price.REGULAR;
+    private PriceIntf childrensPrice = Price.CHILDRENS;
+    private PriceIntf newReleasePrice = Price.NEW_RELEASE;
 
     @Test
     void getPriceTest() {

@@ -1,54 +1,39 @@
 package part1;
 
-abstract class Price {
-
-    abstract int getPriceCode();
-    abstract double getCharge(int daysRented);
-
-    int getFrequentRenterPoints(int daysRented) {
+interface PriceIntf {
+    double getCharge(int daysRented);
+    default int getFrequentRenterPoints(int daysRented) {
         return 1;
     }
 }
 
-class RegularPrice extends Price {
+public enum Price implements PriceIntf {
+    REGULAR {
 
-    int getPriceCode() {
-        return Movie.REGULAR;
-    }
+        public double getCharge(int daysRented) {
+            double result = 2;
+            if (daysRented > 2)
+                result += (daysRented - 2) * 1.5;
+            return result;
+        }
+    },
+    NEW_RELEASE {
 
-    double getCharge(int daysRented) {
-        double result = 2;
-        if (daysRented > 2)
-            result += (daysRented - 2) * 1.5;
-        return result;
-    }
-}
+        public double getCharge(int daysRented) {
+            return daysRented * 3;
+        }
 
-class ChildrensPrice extends Price {
+        public int getFrequentRenterPoints(int daysRented) {
+            return (daysRented > 1) ? 2 : 1;
+        }
+    },
+    CHILDRENS {
 
-    int getPriceCode() {
-        return Movie.CHILDRENS;
-    }
-
-    double getCharge(int daysRented) {
-        double result = 1.5;
-        if (daysRented > 3)
-            result += (daysRented - 3) * 1.5;
-        return result;
-    }
-}
-
-class NewReleasePrice extends Price {
-
-    int getPriceCode() {
-        return Movie.NEW_RELEASE;
-    }
-
-    double getCharge(int daysRented) {
-        return daysRented * 3;
-    }
-
-    int getFrequentRenterPoints(int daysRented) {
-        return (daysRented > 1) ? 2 : 1;
-    }
+        public double getCharge(int daysRented) {
+            double result = 1.5;
+            if (daysRented > 3)
+                result += (daysRented - 3) * 1.5;
+            return result;
+        }
+    },
 }

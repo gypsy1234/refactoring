@@ -8,9 +8,6 @@ import org.junit.jupiter.api.Test;
 
 class CustomerTest {
 
-    private static final int REGULAR = 0;
-    private static final int NEW_RELEASE = 1;
-    private static final int CHILDRENS = 2;
     private Customer customer = null;
 
     @BeforeEach
@@ -26,9 +23,9 @@ class CustomerTest {
     @Test
     void statementWithRegular() {
 
-        Movie regularMovie_FA_1 = new Movie("鋼の錬金術師_11", REGULAR);
-        Movie regularMovie_FA_2 = new Movie("鋼の錬金術師_2", REGULAR);
-        Movie regularMovie_EVO = new Movie("Evolution", REGULAR);
+        Movie regularMovie_FA_1 = new Movie("鋼の錬金術師_11", Price.REGULAR);
+        Movie regularMovie_FA_2 = new Movie("鋼の錬金術師_2", Price.REGULAR);
+        Movie regularMovie_EVO = new Movie("Evolution", Price.REGULAR);
         Rental shortRental = new Rental(regularMovie_FA_1, 1);
         Rental basicRental = new Rental(regularMovie_FA_2, 2);
         Rental longRental = new Rental(regularMovie_EVO, 3);
@@ -58,9 +55,9 @@ class CustomerTest {
     @Test
     void statementWithNewRelease() {
 
-        Movie newReleaseMovie_FA_1 = new Movie("鋼の錬金術師_11", NEW_RELEASE);
-        Movie newReleaseMovie_FA_2 = new Movie("鋼の錬金術師_2", NEW_RELEASE);
-        Movie newReleaseMovie_EVO = new Movie("Evolution", NEW_RELEASE);
+        Movie newReleaseMovie_FA_1 = new Movie("鋼の錬金術師_11", Price.NEW_RELEASE);
+        Movie newReleaseMovie_FA_2 = new Movie("鋼の錬金術師_2", Price.NEW_RELEASE);
+        Movie newReleaseMovie_EVO = new Movie("Evolution", Price.NEW_RELEASE);
         Rental shortRental = new Rental(newReleaseMovie_FA_1, 1);
         Rental basicRental = new Rental(newReleaseMovie_FA_2, 2);
         Rental longRental = new Rental(newReleaseMovie_EVO, 3);
@@ -90,9 +87,9 @@ class CustomerTest {
     @Test
     void statementWithChildrens() {
 
-        Movie childrensMovie_FA_1 = new Movie("鋼の錬金術師_11", CHILDRENS);
-        Movie childrensMovie_FA_2 = new Movie("鋼の錬金術師_2", CHILDRENS);
-        Movie childrensMovie_EVO = new Movie("Evolution", CHILDRENS);
+        Movie childrensMovie_FA_1 = new Movie("鋼の錬金術師_11", Price.CHILDRENS);
+        Movie childrensMovie_FA_2 = new Movie("鋼の錬金術師_2", Price.CHILDRENS);
+        Movie childrensMovie_EVO = new Movie("Evolution", Price.CHILDRENS);
         Rental shortRental = new Rental(childrensMovie_FA_1, 1);
         Rental basicRental = new Rental(childrensMovie_FA_2, 3);
         Rental longRental = new Rental(childrensMovie_EVO, 4);
