@@ -44,6 +44,15 @@ class CustomerTest {
                 "You earned " + 3 + " frequent renter points";
 
         assertEquals(expect, customer.statement());
+
+        String htmlExpect = "<H1>Rentals for <EM>" + customer.getName() + "</EM></H1><P>\n" +
+                regularMovie_FA_1.getTitle() + ": " + shortRental.getCharge() + "<BR>\n" +
+                regularMovie_FA_2.getTitle() + ": " + basicRental.getCharge() + "<BR>\n" +
+                regularMovie_EVO.getTitle() + ": " + longRental.getCharge() + "<BR>\n" +
+                "<P>You owe <EM>" + 7.5 + "</EM><P>\n" +
+                "On this rental you earned <EM>" + 3 + "</EM> frequent renter points<P>";
+
+        assertEquals(htmlExpect, customer.htmlStatement());
     }
 
     @Test
@@ -67,6 +76,15 @@ class CustomerTest {
                 "You earned " + 5 + " frequent renter points";
 
         assertEquals(expect, customer.statement());
+
+        String htmlExpect = "<H1>Rentals for <EM>" + customer.getName() + "</EM></H1><P>\n" +
+                newReleaseMovie_FA_1.getTitle() + ": " + shortRental.getCharge() + "<BR>\n" +
+                newReleaseMovie_FA_2.getTitle() + ": " + basicRental.getCharge() + "<BR>\n" +
+                newReleaseMovie_EVO.getTitle() + ": " + longRental.getCharge() + "<BR>\n" +
+                "<P>You owe <EM>" + 18.0 + "</EM><P>\n" +
+                "On this rental you earned <EM>" + 5 + "</EM> frequent renter points<P>";
+
+        assertEquals(htmlExpect, customer.htmlStatement());
     }
 
     @Test
@@ -90,5 +108,14 @@ class CustomerTest {
                 "You earned " + 3 + " frequent renter points";
 
         assertEquals(expect, customer.statement());
+
+        String htmlExpect = "<H1>Rentals for <EM>" + customer.getName() + "</EM></H1><P>\n" +
+                childrensMovie_FA_1.getTitle() + ": " + shortRental.getCharge() + "<BR>\n" +
+                childrensMovie_FA_2.getTitle() + ": " + basicRental.getCharge() + "<BR>\n" +
+                childrensMovie_EVO.getTitle() + ": " + longRental.getCharge() + "<BR>\n" +
+                "<P>You owe <EM>" + 6.0 + "</EM><P>\n" +
+                "On this rental you earned <EM>" + 3 + "</EM> frequent renter points<P>";
+
+        assertEquals(htmlExpect, customer.htmlStatement());
     }
 }
