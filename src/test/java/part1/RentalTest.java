@@ -11,48 +11,22 @@ class RentalTest {
     private static final int CHILDRENS = 2;
 
     @Test
-    void getChargeWithRegular() {
+    void getChargeTest() {
 
-        Movie regularMovie_FA_1 = new Movie("鋼の錬金術師_11", REGULAR);
-        Movie regularMovie_FA_2 = new Movie("鋼の錬金術師_2", REGULAR);
-        Movie regularMovie_EVO = new Movie("Evolution", REGULAR);
-        Rental shortRental = new Rental(regularMovie_FA_1, 1);
-        Rental basicRental = new Rental(regularMovie_FA_2, 2);
-        Rental longRental = new Rental(regularMovie_EVO, 3);
+        Movie regularMovie = new Movie("鋼の錬金術師_11", REGULAR);
+        Movie newReleaseMovie = new Movie("鋼の錬金術師_2", NEW_RELEASE);
+        Movie childrensMovie = new Movie("Evolution", CHILDRENS);
 
-        assertEquals(2.0, shortRental.getCharge());
-        assertEquals(2.0, basicRental.getCharge());
-        assertEquals(3.5, longRental.getCharge());
+        assertCharge(regularMovie);
+        assertCharge(newReleaseMovie);
+        assertCharge(childrensMovie);
     }
 
-    @Test
-    void getChargeWithNewRelease() {
-
-        Movie newReleaseMovie_FA_1 = new Movie("鋼の錬金術師_11", NEW_RELEASE);
-        Movie newReleaseMovie_FA_2 = new Movie("鋼の錬金術師_2", NEW_RELEASE);
-        Movie newReleaseMovie_EVO = new Movie("Evolution", NEW_RELEASE);
-        Rental shortRental = new Rental(newReleaseMovie_FA_1, 1);
-        Rental basicRental = new Rental(newReleaseMovie_FA_2, 2);
-        Rental longRental = new Rental(newReleaseMovie_EVO, 3);
-
-        assertEquals(3.0, shortRental.getCharge());
-        assertEquals(6.0, basicRental.getCharge());
-        assertEquals(9.0, longRental.getCharge());
-    }
-
-    @Test
-    void getChargeWithChildrens() {
-
-        Movie childrensMovie_FA_1 = new Movie("鋼の錬金術師_11", CHILDRENS);
-        Movie childrensMovie_FA_2 = new Movie("鋼の錬金術師_2", CHILDRENS);
-        Movie childrensMovie_EVO = new Movie("Evolution", CHILDRENS);
-        Rental shortRental = new Rental(childrensMovie_FA_1, 1);
-        Rental basicRental = new Rental(childrensMovie_FA_2, 3);
-        Rental longRental = new Rental(childrensMovie_EVO, 4);
-
-        assertEquals(1.5, shortRental.getCharge());
-        assertEquals(1.5, basicRental.getCharge());
-        assertEquals(3.0, longRental.getCharge());
+    private void assertCharge(Movie movie) {
+        for (int i = 1; i < 10; i++) {
+            Rental rental = new Rental(movie, i);
+            assertEquals(movie.getCharge(i), rental.getCharge());
+        }
     }
 
     @Test
